@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HairSalon.Solution.Models
 {
-    public class Class
+    public class Database
     {
     }
 }
