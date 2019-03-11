@@ -13,16 +13,5 @@ namespace HairSalon.Controllers
         {
             return View();
         }
-        [Route("/showStylists")]
-        public string showStylistList()
-        {
-            return "Oana \n Florin";
-            //return View(showStylistList);
-        }
-        [Route("/newstylist")]
-        public ActionResult New()
-        {
-            return View();
-        }
     }
 }
