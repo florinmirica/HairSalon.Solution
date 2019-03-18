@@ -1,0 +1,20 @@
+﻿
+@if (@Model["stylists"] != null && Model["stylists"].Count > 0)
+{
+    <h3>Here are all the stylists who can do @Model["specialty"].GetName():</h3>
+    <ol>
+        @foreach (var stylist in @Model["stylists"])
+        {
+            <li><a href='/specialty/@Model["specialty"].GetId()/stylists/@stylist.GetId()'>@stylist.GetName()</a></li>
+        }
+    </ol>
+}
+else
+{
+    <h3>There are no stylists who can do @Model["specialty"].GetName() </h3>
+}
+
+<p><a href='/specialties/@Model["specialty"].GetId()/stylists/new'>Add a new stylist to this specialty</a></p>
+<p><a href="/specialties/@Model["specialty"].GetId()/delete">Delete Specialty</a></p>
+<p><a href='/specialties'>Return to specialty list</a></p>
+<p><a href='/'>Return to Main Page</a></p>

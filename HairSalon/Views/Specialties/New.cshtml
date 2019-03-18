@@ -1,0 +1,25 @@
+﻿
+<h1>Add a specialty</h1>
+<p>Add a specialty here:</p>
+
+@if (@Model == null)
+{
+    <form action="/specialties" method="post">
+        <label for="specialtyName">Specialty name</label>
+        <input id="specialtyName" name="specialtyName" type="text">
+        <button type="submit">Add</button>
+    </form>
+}
+else
+{
+    <form action='/stylists/@Model.GetId()/specialties' method='post'>
+        <input id='stylistId' name='stylistId' type='hidden' value='@Model.GetId()'>
+        <label for='specialtyName'>Specialty Name</label>
+        <input id='specialtyName' name='specialtyName' type='text'>
+        <button type='submit'>Add Specialty to stylist @Model.GetName()</button>
+    </form>
+
+    <p><a href="/specialties">Back to specialties.</a></p>
+}
+<p><a href="/">Back home</a></p>
+<p><a href="/specialties">Back to specialties.</a></p>

@@ -1,0 +1,11 @@
+﻿
+<h1>Change stylist name from @Model["stylistName"] to</h1>
+
+<form action="/stylists/@Model["stylistId"]/edit" method="post">
+    <label for="stylistName">Stylist name</label>
+    <input id="stylistName" name="stylistName" type="text">
+    <button type="submit">Update</button>
+</form>
+
+<p><a href="/">Back home</a></p>
+<p><a href="/stylists/@Model["stylistId"]>Back to stylists</a></p>

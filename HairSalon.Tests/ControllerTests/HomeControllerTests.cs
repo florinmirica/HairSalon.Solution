@@ -22,5 +22,6 @@ namespace HairSalon.Tests.ControllerTests
             //Assert
             Assert.IsInstanceOfType(indexView, typeof(ViewResult));
         }
+        
     }
 }

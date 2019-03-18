@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static HairSalon.Startup;
 
 namespace HairSalon.Tests.ControllerTests
 {
@@ -48,6 +49,37 @@ namespace HairSalon.Tests.ControllerTests
 
             //Assert
             Assert.IsInstanceOfType(indexView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Index_HasCorrectModelType_StylistList()
+        {
+            StylistsController controller = new StylistsController();
+            ViewResult indexView = controller.Index() as ViewResult;
+            var result = indexView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(List<Stylist>));
+        }
+
+       // [TestMethod]
+        public void Create_ReturnsCorrectView_True()
+        {
+            StylistsController controller = new StylistsController();
+            ActionResult createView = controller.Create("Dan");
+            Assert.IsInstanceOfType(createView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Create_CreatesNewInstanceOfStylist_True()
+        {
+            ActionResult createPost = new StylistsController().Create("Daniel");
+            Assert.IsInstanceOfType(createPost, typeof(ActionResult));
+        }
+
+        
+
+        public StylistsControllerTests()
+        {
+            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=florin_mirica_test;";
         }
     }
 }

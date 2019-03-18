@@ -1,12 +1,39 @@
-﻿<h3>Here are all the clients who see this stylist:</h3>
-
-<ol>
-    @foreach (var client in @Model["clients"])
+﻿@if (@Model["clients"] != null && Model["clients"].Count > 0)
 {
-    <li><a href='/stylists/@Model["stylist"].GetId()/clients/@client.GetId()'>@client.GetName()</a></li>
-}
-</ol>
+    <h3>Here are all the clients who see @Model["stylist"].GetName():</h3>
 
+    <ol>
+        @foreach (var client in @Model["clients"])
+        {
+            <li><a href='/stylists/@Model["stylist"].GetId()/clients/@client.GetId()'>@client.GetName()</a></li>
+        }
+    </ol>
+
+}
+else
+{
+    <h3>There are no clients who see @Model["stylist"].GetName()</h3>
+}
+
+
+@if (@Model["specialties"] != null && Model["specialties"].Count > 0)
+{
+    <h3>Here are all the specialties for @Model["stylist"].GetName():</h3>
+
+    <ol>
+        @foreach (var specialty in @Model["specialties"])
+        {
+            <li><a href='/specialties/@specialty.GetId()'>@specialty.GetName()</a></li>
+        }
+    </ol>
+}
+else
+{
+    <h3>There are no specialties added for @Model["stylist"].GetName()</h3>
+}
 <p><a href='/stylists/@Model["stylist"].GetId()/clients/new'>Add a new client</a></p>
+<p><a href='/stylists/@Model["stylist"].GetId()/specialty/new'>Add a new specialty</a></p>
+<p><a href="/stylists/@Model["stylist"].GetId()/delete">Delete Stylist</a></p>
+<p><a href="/stylists/@Model["stylist"].GetId()/edit">Edit Stylist</a></p>
 <p><a href='/stylists'>Return to stylist list</a></p>
 <p><a href='/'>Return to Main Page</a></p>
